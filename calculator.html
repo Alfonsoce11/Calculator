@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            body {
+                display: flex;
+                color: white;
+                background: black;
+                justify-content: center;
+                align-items: center;
+                height: 90vh;
+            }
+            #calculator {
+                border-radius: 10%;
+                background: rgb(40, 40, 40);
+                display: flex;
+                align-self: center;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: center;
+                padding-top: 10px;
+                height: auto;
+                width: 250px;
+            }
+            button {
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                cursor: pointer;
+                background: black;
+                color: white;
+                margin-top: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            input[type="text"] {
+                height: 30px;
+                width: 85%;
+            }
+            .break {
+                flex-basis: 100%;
+                height: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="calculator">
+            <input type="text" id="enterEquation" />
+
+            <button type="button" onclick="
+            enterEquation.value += `-`;
+            ">-</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `*`;
+            ">*</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `/`;
+            ">÷</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `+`;
+            ">+</button>
+
+            <div class="break"></div>
+
+            <button type="button" onclick="
+            enterEquation.value += `9`;
+            ">9</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `8`;
+            ">8</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `7`;
+            ">7</button>
+
+            <button type="button" onclick="removeCharacter()">←</button>
+
+            <div class="break"></div>
+
+            <button type="button" onclick="
+            enterEquation.value += `6`;
+            ">6</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `5`;
+            ">5</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `4`;
+            ">4</button>
+
+            <button type="button" onclick="getResult()">=</button>
+
+            <div class="break"></div>
+
+            <button type="button" onclick="
+            enterEquation.value += `3`;
+            ">3</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `2`;
+            ">2</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `1`;
+            ">1</button>
+
+            <button type="button" onclick="
+            enterEquation.value += `.`;
+            ">.</button>
+
+            <div class="break"></div>
+
+            <button type="button" onclick="
+            enterEquation.value += `0`;
+            ">0</button>   
+
+        </div>
+        <script>
+            const enterEquation = document.getElementById("enterEquation");
+            let equation = ``;
+            let result = eval(equation);
+            setInterval(function () {
+                equation = enterEquation.value;
+                result = eval(equation);
+            }, 1)
+
+            function getResult() {
+                enterEquation.value = `${result}`;
+            }
+            function removeCharacter() {
+                enterEquation.value = enterEquation.value.slice(0, -1);
+            }
+
+            document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                getResult();
+            }
+        });
+        </script>
+    </body>
+</html>
